@@ -51,8 +51,10 @@ class PostController{
         exit(); 
     }
 
-    function delete(){
-
+    function delete($id){
+        require_once("./mvc/models/PostModel.php");
+        $model = new PostModel();
+        $model->deletePost($id);
     }
 }
 ?>

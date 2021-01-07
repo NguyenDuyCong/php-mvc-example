@@ -113,4 +113,13 @@ class PostModel{
         // move image file to assets/images
         // $query = "UPDATE `manage_post` SET `title`=".$_POST['title'].", `description`=".$_POST['description'].", `image`".$_POST['image'];
     }
+
+    function deletePost($id){
+        $query = "DELETE FROM `manage_post` WHERE `id` = ".$id.";";
+        // echo $query;
+        $this->con->query($query);
+
+        header("Location: index.php");
+        exit();
+    }
 }

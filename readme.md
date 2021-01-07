@@ -5,6 +5,7 @@ Manage Post with PHP and Mysql
 - [x] manage admin page
 - [x] add new post
 - [x] edit a post
+- [x] delete a post
 - [ ] show a post
 - [ ] list posts in user
 - [ ] pagination (phân trang)

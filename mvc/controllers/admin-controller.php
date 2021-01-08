@@ -25,8 +25,14 @@ class PostController{
         exit(); 
     }
 
-    function show(){
+    function show($id){
+        require_once("./mvc/models/PostModel.php");
+        $model = new PostModel();
+        $post = $model->getPostByID($id);
 
+        require_once("./mvc/views/show-post.php");
+        $showPost = new ShowPost();
+        $showPost->getPost($post);
     }
 
     function edit($id){
@@ -56,5 +62,6 @@ class PostController{
         $model = new PostModel();
         $model->deletePost($id);
     }
+
 }
 ?>

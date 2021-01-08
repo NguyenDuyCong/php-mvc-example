@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <button>Show</button>
+    <button><a href="index.php?action=show&id=<?php echo $post['id']?>">Show</a></button>
     <button><a href="index.php">Back</a></button>
 
     <form action="?action=updatePost&id=<?php echo $post['id']?>" method="POST" enctype="multipart/form-data">

@@ -15,8 +15,8 @@
         <?php foreach ($posts as $post):?>
             <tr>
                 <td style="border: 1px solid black"><?php echo $post['id']?></td>
-                <td style="border: 1px solid black"><img src="<?php echo "assets/images/".$post['image']?>" width="100px;" alt=""></td>
-                <td style="border: 1px solid black"><?php echo $post['title']?></td>
+                <td style="border: 1px solid black"><img src="<?php echo "assets/images/".$post['image']?>" height="100px;" alt=""></td>
+                <td style="border: 1px solid black"><a href="index.php?controller=user&action=show&id=<?php echo $post['id']?>"><?php echo $post['title']?></a></td>
             </tr>
         <?php endforeach;?>
     </table>

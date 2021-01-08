@@ -7,12 +7,12 @@
 </head>
 <body>
     <h2><?php echo $post['title']?></h2>
-    <div style="display: inline-block;">
+    <div style="height: 150px;">
         
-        <img src="<?php echo "assets/images/".$post['image']?>" width="100px" style="float: left; padding-right: 20px;">
+        <img src="<?php echo "assets/images/".$post['image']?>" height="150pxpx" style="float: left; padding-right: 20px;">
         <div><?php echo $post['description']?></div>
         
     </div>
-    <button style="margin: 20px;"><a href="index.php">Back</a></button>
+    <button style="margin: 20px;"><a href="<?php if($_GET['controller']=='user') {echo "index.php?controller=user";} else echo "index.php?controller=admin";?>">Back</a></button>
 </body>
 </html>

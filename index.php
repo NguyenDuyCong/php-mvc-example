@@ -3,8 +3,11 @@ $controller = "admin";
 $action = "getPosts";
 $postID = '';
 
-if ($_GET['controller'] == 'user'){
+if (isset($_GET['controller']) && $_GET['controller'] == 'user'){
     $controller = 'user';
+
+    // default action in user page
+    $action = 'getListPosts';
 }
 require_once("./mvc/controllers/".$controller."-controller.php");
 

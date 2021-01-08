@@ -6,10 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <button><a href="index.php?action=show&id=<?php echo $post['id']?>">Show</a></button>
-    <button><a href="index.php">Back</a></button>
+    <button><a href="index.php?controller=admin&action=show&id=<?php echo $post['id']?>">Show</a></button>
+    <button><a href="index.php?controller=admin">Back</a></button>
 
-    <form action="?action=updatePost&id=<?php echo $post['id']?>" method="POST" enctype="multipart/form-data">
+    <form action="?controller=admin&action=updatePost&id=<?php echo $post['id']?>" method="POST" enctype="multipart/form-data">
         <table>
             <tr>
                 <td><label for="tittextle">Title</label></td>

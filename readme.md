@@ -8,6 +8,6 @@ Manage Post with PHP and Mysql
 - [x] delete a post
 - [x] show a post
 - [x] list posts in user
-- [ ] show a post in user
+- [x] show a post in user
 - [ ] pagination (phân trang)
 - [ ] frontend with css/js

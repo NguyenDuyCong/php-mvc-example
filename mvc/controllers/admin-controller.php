@@ -21,7 +21,7 @@ class PostController{
         $addPost = new PostModel();
         $addPost->addPost();
         // direct to index.php
-        header("Location: index.php");
+        header("Location: index.php?controller=admin");
         exit(); 
     }
 
@@ -53,7 +53,7 @@ class PostController{
         $model->updatePost($id);
 
         // direct to index.php
-        header("Location: index.php");
+        header("Location: index.php?controller=admin");
         exit(); 
     }
 

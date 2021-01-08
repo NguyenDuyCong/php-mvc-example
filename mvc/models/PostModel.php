@@ -31,6 +31,7 @@ class PostModel{
             }
         }
 
+        $this->con->close();
         return $posts;
 
     }
@@ -48,6 +49,7 @@ class PostModel{
         }
 
         // print_r($post);
+        $this->con->close();
         return $post;
 
         
@@ -109,6 +111,7 @@ class PostModel{
                 ", `update_at`='".$date."' WHERE `id`=".$id;
         // echo $query;
         $this->con->query($query);
+        $this->con->close();
 
         // move image file to assets/images
         // $query = "UPDATE `manage_post` SET `title`=".$_POST['title'].", `description`=".$_POST['description'].", `image`".$_POST['image'];
@@ -118,8 +121,9 @@ class PostModel{
         $query = "DELETE FROM `manage_post` WHERE `id` = ".$id.";";
         // echo $query;
         $this->con->query($query);
+        $this->con->close();
 
-        header("Location: index.php");
+        header("Location: index.php?controller=admin");
         exit();
     }
 }

@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="?action=addSubmit" method="post" enctype="multipart/form-data">
+    <form action="?controller=admin&action=addSubmit" method="post" enctype="multipart/form-data">
         <table>
             <tr>
                 <td><label for="title">Title</label></td>

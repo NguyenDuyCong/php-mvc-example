@@ -7,7 +7,7 @@
 </head>
 <body>
 
-    <form action="?action=add" method="POST">
+    <form action="?controller=admin&action=add" method="POST">
         <input type="submit" name="add-new" value="New">
     </form>
 

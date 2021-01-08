@@ -1,13 +1,29 @@
 <?php
 class PostController{
     function getPosts() {
+        
         require_once("./mvc/models/PostModel.php");
         $model = new PostModel();
-        $posts = $model->getPosts();
+        
+        $size_of_page = 4;
+        $total_pages = $model->getTotalPages($size_of_page);
+        
+        
+        $page_num = 1;
+        if (isset($_GET['page'])){
+            $page_num = $_GET['page'];
+        }
 
-        require_once("./mvc/views/PostView.php");
-        $view = new PostView();
-        $view->ShowAllPost($posts);
+        if ($page_num <= $total_pages) {
+            $posts = $model->getPosts($page_num, $size_of_page);
+
+            require_once("./mvc/views/PostView.php");
+            $view = new PostView();
+            $view->ShowAllPost($posts, $page_num, $total_pages);
+        }else{
+            echo "No record!!!";
+        }
+
     }
 
     function add(){

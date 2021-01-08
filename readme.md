@@ -10,5 +10,5 @@ Manage Post with PHP and Mysql
 - [x] list posts in user
 - [x] show a post in user
 - [ ] .htaccess
-- [ ] pagination (phân trang)
+- [x] pagination (phân trang)
 - [ ] frontend with css/js

@@ -21,5 +21,41 @@
         <?php endforeach;?>
     </table>
 
+    <?php 
+        for ($i = 1; $i <= $total_pages; $i++){
+            if($page_num == $i){
+                echo $i;
+            }else{
+
+    ?>
+        <a href="index.php?controller=user&action=getListPosts&page=<?php echo $i; ?>"><?php echo $i. " "?></a>
+    <?php
+                }
+            }
+    ?>
+
+    <!-- combobox -->
+    <?php if((int)$total_pages > 1) {?>
+        <select name="select" onchange="nextpage(this.value)">
+            <?php for ($i = 1; $i <= $total_pages; $i++) {?>
+                <?php if($current_page = $i) {?>
+                    <option value="<?php echo $i;?>" selected="selected">Trang <?php echo $i;?></option>
+                <?php } else {?>
+                    <option value="<?php echo $i;?>">Trang <?php echo $i;?></option>
+                <?php }?>
+            <?php }?>
+        </select>
+    <?php }?>
+    
+    <form name="boxpage" action="#">
+        <input type="hidden" name="page">
+    </form>
+
+    <script>
+        function nextpage(page){
+            boxpage.page.value = page;
+            boxpage.submit;
+    }
+    </script>
 </body>
 </html>

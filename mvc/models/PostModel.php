@@ -21,9 +21,59 @@ class PostModel{
             echo "Failed to connect to MySQL: " . $this->con->connect_error;
             exit();
         }
+
+        // Pagination
+        // $counter = 0;
+
+        // $recordsetrow = $this->con->query("SELECT COUNT(*) FROM `manage_post`");
+        // $rows = mysqli_fetch_array($recordsetrow);
+        
+        // $total_rows = $rows[0];
+        // $size_of_pages = 4;
+        // $total_pages = 1;
+
+        // if($total_rows % $size_of_pages == 0){
+        //     $total_pages = $total_rows/$size_of_pages;
+        // }else{
+        //     $total_pages = (int)($total_rows/$size_of_pages) + 1;
+        // }
+
+        // $start_row = 1;
+        // $current_page = 1;
+
+        // if(isset($_GET['page']) || $_GET['page'] == 1){
+        //     $start_row = 0;
+        //     $current_page = 1;
+        // }else{
+        //     $start_row = ($_GET['page'] - 1) * $size_of_pages;
+        //     $current_page = $_GET['page'];
+        // }
     }
-    function getPosts(){
-        $result = $this->con->query("SELECT * FROM manage_post");
+
+    function getTotalPages($size_of_pages){
+        $recordsetrow = $this->con->query("SELECT COUNT(*) FROM `manage_post`");
+        $rows = mysqli_fetch_array($recordsetrow);
+        
+        $total_rows = $rows[0];
+        $total_pages = 1;
+
+        if($total_rows % $size_of_pages == 0){
+            $total_pages = $total_rows/$size_of_pages;
+        }else{
+            $total_pages = (int)($total_rows/$size_of_pages) + 1;
+        }
+
+        return $total_pages;
+    }
+
+    function getPosts($page_num, $size_of_pages){
+        
+        $start_row = 0;
+        if ($page_num > 1){
+            $start_row = ($page_num - 1) * $size_of_pages;
+        }
+
+        $result = $this->con->query("SELECT * FROM manage_post LIMIT ".$start_row.", ".$size_of_pages."");
         $posts = array();
         if($result->num_rows > 0){
             while($post = mysqli_fetch_assoc($result)){
@@ -35,6 +85,7 @@ class PostModel{
         return $posts;
 
     }
+
 
     function getPostByID($id){
         $query = "SELECT * FROM manage_post WHERE id = " . $id;

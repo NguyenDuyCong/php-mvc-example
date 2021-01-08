@@ -1,9 +1,9 @@
 <?php
 class PostController{
-    function getPost() {
+    function getPosts() {
         require_once("./mvc/models/PostModel.php");
         $model = new PostModel();
-        $posts = $model->getPost();
+        $posts = $model->getPosts();
 
         require_once("./mvc/views/PostView.php");
         $view = new PostView();

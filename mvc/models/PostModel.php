@@ -22,7 +22,7 @@ class PostModel{
             exit();
         }
     }
-    function getPost(){
+    function getPosts(){
         $result = $this->con->query("SELECT * FROM manage_post");
         $posts = array();
         if($result->num_rows > 0){

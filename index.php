@@ -1,11 +1,18 @@
 <?php
 $controller = "admin";
-$action = "getPost";
+$action = "getPosts";
 $postID = '';
 
-require_once("./mvc/controllers/admin-controller.php");
+if ($_GET['controller'] == 'user'){
+    $controller = 'user';
+}
+require_once("./mvc/controllers/".$controller."-controller.php");
 
-$controller = new PostController();
+if($controller == 'user'){
+    $controller = new UserController();
+}else{
+    $controller = new PostController();
+}
 
 if(isset($_GET['action'])){
     $action = $_GET['action'];

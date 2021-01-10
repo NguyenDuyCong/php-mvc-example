@@ -1,14 +1,12 @@
 <?php
 $controller = "user";
-$action = "getListPosts";
+$action = "getPosts";
 $postID = '';
 
 if (isset($_GET['controller']) && $_GET['controller'] == 'admin'){
     $controller = 'admin';
-
-    // default action in user page
-    $action = 'getPosts';
 }
+
 require_once("./mvc/controllers/".$controller."-controller.php");
 
 if($controller == 'user'){

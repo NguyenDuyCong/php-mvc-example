@@ -1,6 +1,6 @@
 <?php 
 class UserController{
-    function getListPosts(){
+    function getPosts(){
         require_once("./mvc/models/PostModel.php");
         $model = new PostModel();
         

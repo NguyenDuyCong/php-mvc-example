@@ -7,9 +7,9 @@
 </head>
 <body>
     <button><a href="index.php?controller=admin&action=show&id=<?php echo $post['id']?>">Show</a></button>
-    <button><a href="index.php?controller=admin">Back</a></button>
+    <button><a href="../../admin">Back</a></button>
 
-    <form action="?controller=admin&action=updatePost&id=<?php echo $post['id']?>" method="POST" enctype="multipart/form-data">
+    <form action="../../index.php?controller=admin&action=updatePost&id=<?php echo $post['id']?>" method="POST" enctype="multipart/form-data">
         <table>
             <tr>
                 <td><label for="tittextle">Title</label></td>
@@ -23,7 +23,7 @@
                 <td><label for="image">Image</label></td>
                 <td>
                     <input type="file" name="image" accept="image/*" onchange="previewImage(event);"><br>
-                    <img id="image" src="<?php echo "assets/images/".$post['image']?>" width="100px;">
+                    <img id="image" src="<?php echo "../../assets/images/".$post['image']?>" width="100px;">
                 </td>
             </tr>
             <tr>

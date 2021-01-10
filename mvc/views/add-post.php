@@ -1,6 +1,6 @@
 <?php
     class AddPost{
-        function addPost(){
+        function addAPost(){
             require_once("./templates/add-form.php");
         }
     }

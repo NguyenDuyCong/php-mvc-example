@@ -6,7 +6,8 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="?controller=admin&action=addSubmit" method="post" enctype="multipart/form-data">
+    <button><a href="../admin">Back</a></button>
+    <form action="../index.php?controller=admin&action=addSubmit" method="post" enctype="multipart/form-data">
         <table>
             <tr>
                 <td><label for="title">Title</label></td>

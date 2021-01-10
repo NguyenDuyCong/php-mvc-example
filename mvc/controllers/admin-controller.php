@@ -29,15 +29,15 @@ class PostController{
     function add(){
         require("./mvc/views/add-post.php");
         $addView = new AddPost();
-        $addView->addPost();
+        $addView->addAPost();
     }
 
     function addSubmit() {
         require_once("./mvc/models/PostModel.php");
         $addPost = new PostModel();
         $addPost->addPost();
-        // direct to index.php
-        header("Location: index.php?controller=admin");
+        // direct to index.php?controller=admin
+        header("Location: admin");
         exit(); 
     }
 
@@ -68,8 +68,8 @@ class PostController{
         $model = new PostModel();
         $model->updatePost($id);
 
-        // direct to index.php
-        header("Location: index.php?controller=admin");
+        // direct to index.php?controller=admin
+        header("Location: admin");
         exit(); 
     }
 
@@ -77,6 +77,10 @@ class PostController{
         require_once("./mvc/models/PostModel.php");
         $model = new PostModel();
         $model->deletePost($id);
+
+        // direct to index.php?controller=admin
+        header("Location: ../../admin");
+        exit();
     }
 
 }

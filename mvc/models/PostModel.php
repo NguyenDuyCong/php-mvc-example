@@ -173,8 +173,5 @@ class PostModel{
         // echo $query;
         $this->con->query($query);
         $this->con->close();
-
-        header("Location: index.php?controller=admin");
-        exit();
     }
 }

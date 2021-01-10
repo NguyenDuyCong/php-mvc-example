@@ -15,8 +15,12 @@
         <?php foreach ($posts as $post):?>
             <tr>
                 <td style="border: 1px solid black"><?php echo $post['id']?></td>
-                <td style="border: 1px solid black"><img src="<?php echo "assets/images/".$post['image']?>" height="100px;" alt=""></td>
-                <td style="border: 1px solid black"><a href="index.php?controller=user&action=show&id=<?php echo $post['id']?>"><?php echo $post['title']?></a></td>
+                <td style="border: 1px solid black">
+                    <img src="<?php if(isset($_GET['page'])) {echo "../assets/images/".$post['image'];} else echo "assets/images/".$post['image']?>" height="100px;" alt="">
+                </td>
+                <td style="border: 1px solid black">
+                    <a href="<?php if(isset($_GET['page'])) {echo "../user/show/".$post['id'];} else echo "user/show/".$post['id'] ?>"><?php echo $post['title']?></a>
+                </td>
             </tr>
         <?php endforeach;?>
     </table>
@@ -28,7 +32,9 @@
             }else{
 
     ?>
-        <a href="index.php?controller=user&action=getListPosts&page=<?php echo $i; ?>"><?php echo $i. " "?></a>
+        <a href="<?php if(isset($_GET['page'])) {echo "../user/".$i;} else echo "user/".$i; ?>">
+            <?php echo $i. " "?>
+        </a>
     <?php
                 }
             }

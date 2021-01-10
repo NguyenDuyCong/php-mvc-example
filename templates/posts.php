@@ -7,7 +7,7 @@
 </head>
 <body>
 
-    <form action="?controller=admin&action=add" method="POST">
+    <form action="<?php if(isset($_GET['page'])) echo "../admin/add"; else echo "admin/add"; ?>" method="POST">
         <input type="submit" name="add-new" value="New">
     </form>
 
@@ -23,14 +23,16 @@
             <?php foreach($posts as $post):?>
                 <tr>
                     <td style="border: 1px solid black"><?php echo $post["id"]?></td>
-                    <td style="border: 1px solid black"><img src="<?php echo "assets/images/".$post["image"]?>" height="100px"></td>
+                    <td style="border: 1px solid black">
+                    <img src="<?php if(isset($_GET['page'])) {echo "../assets/images/".$post["image"];} else echo "assets/images/".$post['image']; ?>" height="100px">
+                    </td>
                     <td style="border: 1px solid black"><?php echo $post["title"]?></td>
                     <td style="border: 1px solid black"><?php echo $post['status']?></td>
                     <td style="border: 1px solid black">
                         <div>
-                            <form action="?controller=admin&action=show&id=<?php echo $post['id']?>" method="post"> <input type="submit" name="show" value="Show"> </form> | 
-                            <form action="?controller=admin&action=edit&id=<?php echo $post['id']?>" method="post"> <input type="submit" name="edit" value="Edit"> </form> | 
-                            <form action="?controller=admin&action=delete&id=<?php echo $post['id']?>" method="post"> <input type="submit" name="delete" value="Delete"> </form> 
+                            <form action="<?php if(isset($_GET['page'])) echo "../admin/show/".$post['id']; else echo "admin/show/".$post['id']; ?>" method="post"> <input type="submit" name="show" value="Show"> </form> | 
+                            <form action="<?php if(isset($_GET['page'])) echo "../admin/edit/".$post['id']; else echo "admin/edit/".$post['id']; ?>" method="post"> <input type="submit" name="edit" value="Edit"> </form> | 
+                            <form action="<?php if(isset($_GET['page'])) echo "../admin/delete/".$post['id']; else echo "admin/delete/".$post['id']; ?>" method="post"> <input type="submit" name="delete" value="Delete"> </form> 
                         </div>
                     </td>
                 </tr>
@@ -45,7 +47,7 @@
                 }else{
 
         ?>
-            <a href="index.php?controller=admin&action=getPosts&page=<?php echo $i; ?>"><?php echo $i. " "?></a>
+            <a href="<?php if(isset($_GET['page'])) {echo "../admin/".$i;} else echo "admin/".$i; ?>"><?php echo $i. " "?></a>
         <?php
                 }
             }

@@ -11,7 +11,7 @@ class PostModel{
         $this->con = mysqli_connect(
             $this->hostname, 
             $this->username,
-            $this->password,
+            $this->password
         );
         
         if($this->con->connect_errno){

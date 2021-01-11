@@ -27,7 +27,7 @@
                     <img src="<?php if(isset($_GET['page'])) {echo "../assets/images/".$post["image"];} else echo "assets/images/".$post['image']; ?>" height="100px">
                     </td>
                     <td style="border: 1px solid black"><?php echo $post["title"]?></td>
-                    <td style="border: 1px solid black"><?php echo $post['status']?></td>
+                    <td style="border: 1px solid black"><?php if ($post['status'] == 1) echo "Enable"; else echo "Disable" ?></td>
                     <td style="border: 1px solid black">
                         <div>
                             <form action="<?php if(isset($_GET['page'])) echo "../admin/show/".$post['id']; else echo "admin/show/".$post['id']; ?>" method="post"> <input type="submit" name="show" value="Show"> </form> | 
@@ -57,7 +57,7 @@
         <?php if((int)$total_pages > 1) {?>
             <select name="select" onchange="nextpage(this.value)">
                 <?php for ($i = 1; $i <= $total_pages; $i++) {?>
-                    <?php if($current_page = $i) {?>
+                    <?php if($current_page == $i) {?>
                         <option value="<?php echo $i;?>" selected="selected">Trang <?php echo $i;?></option>
                     <?php } else {?>
                         <option value="<?php echo $i;?>">Trang <?php echo $i;?></option>

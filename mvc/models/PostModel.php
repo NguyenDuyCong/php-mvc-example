@@ -112,9 +112,17 @@ class PostModel{
         if(!file_exists($out_dir)){
             @mkdir($out_dir, 0777);
         }
+        
+        $image_name = $_FILES['image']['name'];
+        $image_ext = pathinfo($image_name, PATHINFO_EXTENSION);
+        
+        $random_no = rand(0,10000);
+        $rename = 'Upload'.date('Ymd').$random_no;
+        $new_image_name = $rename.".".$image_ext;
+        
         // move image file to assets/images
         if(!file_exists($out_dir.$_FILES['image']['name'])){
-            if (move_uploaded_file($_FILES['image']['tmp_name'], $out_dir.$_FILES['image']['name'])){
+            if (move_uploaded_file($_FILES['image']['tmp_name'], $out_dir.$new_image_name)){
                 echo "Successfull!";
             };
         }
@@ -123,7 +131,7 @@ class PostModel{
         date_default_timezone_set('Asia/Ho_Chi_Minh');
         $date = date("Y-m-d H:i:s");
         // echo $date;
-        $query = "INSERT INTO `manage_post` (`id`, `title`, `description`, `image`, `status`, `create_at`, `update_at`) VALUES (NULL, '". $_POST['title'] ."', '". $_POST['description'] ."', '". $_FILES['image']['name'] ."', '". $_POST['status'] ."', '". $date ."', NULL);";
+        $query = "INSERT INTO `manage_post` (`id`, `title`, `description`, `image`, `status`, `create_at`, `update_at`) VALUES (NULL, '". $_POST['title'] ."', '". $_POST['description'] ."', '". $new_image_name ."', '". $_POST['status'] ."', '". $date ."', NULL);";
 
         // echo $query;
         $this->con->query($query);

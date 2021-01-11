@@ -1,6 +1,29 @@
 #### Exercise1
 Manage Post with PHP and Mysql
+normal link
+admin page:
+http://localhost:8080/phpTutorial/Exercise1/admin
 
+add new post:
+http://localhost:8080/phpTutorial/Exercise1/admin/add
+
+edit a post
+http://localhost:8080/phpTutorial/Exercise1/admin/edit/4
+
+show a post
+http://localhost:8080/phpTutorial/Exercise1/admin/show/4
+
+delete a post
+http://localhost:8080/phpTutorial/Exercise1/admin/delete/4
+
+user page:
+
+http://localhost:8080/phpTutorial/Exercise1/ or http://localhost:8080/phpTutorial/Exercise1/user
+
+show a post:
+http://localhost:8080/phpTutorial/Exercise1/user/show/4
+
+to do 
 - [x] connect database
 - [x] manage admin page
 - [x] add new post

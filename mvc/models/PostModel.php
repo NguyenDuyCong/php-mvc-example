@@ -177,8 +177,29 @@ class PostModel{
     }
 
     function deletePost($id){
+        
+        $query = "SELECT * FROM `manage_post` WHERE `id`=".$id;
+
+        $result = $this->con->query($query);
+        if($result->num_rows > 0) {
+            $post = mysqli_fetch_array($result);
+        }else{
+            echo "No post in database";
+        }
+
+        $image_path = 'assets/images/'.$post['image'];
+        if (file_exists($image_path)){
+            unlink($image_path);
+            echo "delete image in".$image_path;
+        } else{
+            echo "image is not exists in ".$image_path;
+        }
+
+
+
         $query = "DELETE FROM `manage_post` WHERE `id` = ".$id.";";
         // echo $query;
+
         $this->con->query($query);
         $this->con->close();
     }

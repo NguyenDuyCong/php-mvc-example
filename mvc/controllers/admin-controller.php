@@ -21,7 +21,10 @@ class PostController{
             $view = new PostView();
             $view->ShowAllPost($posts, $page_num, $total_pages);
         }else{
-            echo "No record!!!";
+            echo "Add new post";
+            require_once("./mvc/views/PostView.php");
+            $view = new PostView();
+            $view->ShowAllPost([], 1, 1);
         }
 
     }

@@ -4,7 +4,7 @@ class PostModel{
     protected $hostname = 'localhost';
     protected $username = 'root';
     protected $password = '';
-    protected $dbname = 'mvc';
+    protected $dbname = 'test';
     
     function __construct()
     {
@@ -12,42 +12,39 @@ class PostModel{
             $this->hostname, 
             $this->username,
             $this->password,
-            $this->dbname,
         );
-    
-        $this->con->set_charset('utf-8');
-    
+        
         if($this->con->connect_errno){
             echo "Failed to connect to MySQL: " . $this->con->connect_error;
             exit();
         }
 
-        // Pagination
-        // $counter = 0;
 
-        // $recordsetrow = $this->con->query("SELECT COUNT(*) FROM `manage_post`");
-        // $rows = mysqli_fetch_array($recordsetrow);
-        
-        // $total_rows = $rows[0];
-        // $size_of_pages = 4;
-        // $total_pages = 1;
+        // Create database
+        $query = "CREATE DATABASE IF NOT EXISTS ".$this->dbname;
+        if($this->con->query($query) === TRUE){
+            $this->con->select_db($this->dbname);
+        } else {
+            echo "Error creating database: " . $this->con->error;
+        }
 
-        // if($total_rows % $size_of_pages == 0){
-        //     $total_pages = $total_rows/$size_of_pages;
-        // }else{
-        //     $total_pages = (int)($total_rows/$size_of_pages) + 1;
-        // }
+        // Create table
+        $query = "CREATE TABLE IF NOT EXISTS `manage_post` (
+                `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                `title` varchar(100) NOT NULL,
+                `description` text NOT NULL,
+                `image` varchar(200) NOT NULL,
+                `status` int(11) NOT NULL,
+                `create_at` datetime NOT NULL,
+                `update_at` datetime DEFAULT NULL
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
 
-        // $start_row = 1;
-        // $current_page = 1;
+        if ($this->con->query($query) === FALSE){
+            echo "Error creating table: " . $this->con->error;
+        }
 
-        // if(isset($_GET['page']) || $_GET['page'] == 1){
-        //     $start_row = 0;
-        //     $current_page = 1;
-        // }else{
-        //     $start_row = ($_GET['page'] - 1) * $size_of_pages;
-        //     $current_page = $_GET['page'];
-        // }
+        $this->con->set_charset('utf-8');
+    
     }
 
     function getTotalPages($size_of_pages){

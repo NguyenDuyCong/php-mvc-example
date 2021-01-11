@@ -41,7 +41,7 @@
     ?>
 
     <!-- combobox -->
-    <?php if((int)$total_pages > 1) {?>
+    <?php if((int)$total_pages >= 1) {?>
         <select name="select" onchange="nextpage(this.value)">
             <?php for ($i = 1; $i <= $total_pages; $i++) {?>
                 <?php if($current_page = $i) {?>

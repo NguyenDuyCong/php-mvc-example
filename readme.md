@@ -1,6 +1,7 @@
 #### Exercise1
 Manage Post with PHP and Mysql
-normal link
+***
+#### normal link
 admin page:
 http://localhost:8080/phpTutorial/Exercise1/admin
 
@@ -29,6 +30,7 @@ http://localhost:8080/phpTutorial/Exercise1/user/show/4
 paginator:
 http://localhost:8080/phpTutorial/Exercise1/user/1
 
+***
 to do 
 - [x] connect database
 - [x] manage admin page
